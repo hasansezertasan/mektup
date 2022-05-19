@@ -55,6 +55,27 @@ window.addEventListener("load", (event) => {
   }
 });
 
+/* START: Copy to clipboard */ 
 function copyToClipboard() {
   navigator.clipboard.writeText(document.location.href);
 }
+/* END: Copy to clipboard */ 
+
+/* START: JQuery Auto Resize */ 
+jQuery.fn.extend({
+  autoHeight: function () {
+    function autoHeight_(element) {
+      return jQuery(element).css({
+        'height': 'auto',
+        'overflow-y': 'hidden'
+      }).height(element.scrollHeight);
+    }
+    return this.each(function () {
+      autoHeight_(this).on('input', function () {
+        autoHeight_(this);
+      });
+    });
+  }
+});
+$('#my_letter').autoHeight();
+/* END: JQuery Auto Resize */ 
