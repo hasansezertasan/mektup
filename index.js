@@ -5,6 +5,8 @@ const my_letter = document.getElementById("my_letter");
 const queryString = window.location.search;
 const urlParams = new URLSearchParams(queryString);
 
+let path = window.location.origin + window.location.pathname;
+let full_url = document.location.href;
 
 function updateValues() {
   var my_title_value = my_title.value;
@@ -19,7 +21,6 @@ function updateValues() {
   });
 
   // Full path
-  let path = window.location.origin + window.location.pathname;
   // Generate Query String with params
   let query = params.toString();
   // Get file name
@@ -29,7 +30,8 @@ function updateValues() {
   //console.log(query);
   //console.log(path)
   //console.log(path+"?"+query)
-  
+  full_url = path + "?" + query;
+
   // Update URL
   history.pushState({}, null, file_name + "?" + query);
 }
@@ -42,7 +44,7 @@ window.addEventListener("load", (event) => {
   // Update Title
   my_title.value = my_title_value;
   //console.log(my_title);
-  
+
   // Update Letter
   my_letter.value = my_letter_value;
   //console.log(my_letter);
@@ -52,3 +54,7 @@ window.addEventListener("load", (event) => {
     updateValues();
   }
 });
+
+function copyToClipboard() {
+  navigator.clipboard.writeText(document.location.href);
+}
