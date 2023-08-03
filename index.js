@@ -55,13 +55,13 @@ window.addEventListener("load", (event) => {
   }
 });
 
-/* START: Copy to clipboard */ 
+/* START: Copy to clipboard */
 function copyToClipboard() {
   navigator.clipboard.writeText(document.location.href);
 }
-/* END: Copy to clipboard */ 
+/* END: Copy to clipboard */
 
-/* START: JQuery Auto Resize */ 
+/* START: JQuery Auto Resize */
 jQuery.fn.extend({
   autoHeight: function () {
     function autoHeight_(element) {
