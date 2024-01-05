@@ -1,65 +1,38 @@
-// Variables
-const my_title = document.getElementById("my_title");
-const my_letter = document.getElementById("my_letter");
-// Query String when page is loaded
-const queryString = window.location.search;
-const urlParams = new URLSearchParams(queryString);
-
+const title = document.getElementById("title");
+const description = document.getElementById("description");
+const submitButton = document.getElementById("copyToClipboard");
+const urlParams = new URLSearchParams(window.location.search);
 let path = window.location.origin + window.location.pathname;
-let full_url = document.location.href;
 
-function updateValues() {
-  var my_title_value = my_title.value;
-  var my_letter_value = my_letter.value;
-  // Update Title
-  document.title = my_title_value + " : " + my_letter_value;
-
+function updateURL() {
+  // Update Document Title
+  document.title = title.value + " : " + description.value;
   // Generate Query Params
   var params = new URLSearchParams({
-    my_title: my_title_value,
-    my_letter: my_letter_value,
+    title: title.value,
+    description: description.value,
   });
 
-  // Full path
-  // Generate Query String with params
   let query = params.toString();
-  // Get file name
-  file_name = path.split("/");
-  file_name = file_name[file_name.length - 1];
-
-  //console.log(query);
-  //console.log(path)
-  //console.log(path+"?"+query)
-  full_url = path + "?" + query;
-
+  fileName = path.split("/");
+  fileName = fileName[fileName.length - 1];
   // Update URL
-  history.pushState({}, null, file_name + "?" + query);
+  history.pushState({}, null, fileName + "?" + query);
 }
 
 window.addEventListener("load", (event) => {
-  //console.log(queryString);
-  var my_title_value = urlParams.get("my_title") || "";
-  var my_letter_value = urlParams.get("my_letter") || "";
-
-  // Update Title
-  my_title.value = my_title_value;
-  //console.log(my_title);
-
-  // Update Letter
-  my_letter.value = my_letter_value;
-  //console.log(my_letter);
-
-  // Update Values if any
-  if (my_title_value != "" || my_letter_value != "") {
-    updateValues();
-  }
+  title.value = urlParams.get("title") || "";
+  description.value = urlParams.get("description") || "";
 });
-
-/* START: Copy to clipboard */
-function copyToClipboard() {
+title.addEventListener("input", (event) => {
+  updateURL();
+});
+description.addEventListener("input", (event) => {
+  updateURL();
+});
+submitButton.addEventListener("click", (event) => {
   navigator.clipboard.writeText(document.location.href);
-}
-/* END: Copy to clipboard */
+});
 
 /* START: JQuery Auto Resize */
 jQuery.fn.extend({
@@ -77,5 +50,5 @@ jQuery.fn.extend({
     });
   }
 });
-$('#my_letter').autoHeight();
+$('#description').autoHeight();
 /* END: JQuery Auto Resize */ 
