@@ -2,7 +2,7 @@ repo_name: hasansezertasan/mektup
 report_id: 6e6a8dab1de1555440b9e2cf4ccaa761
 version: 0.1
 repo_type: Public
-timestamp: '2023-12-21T15:07:43+00:00'
+timestamp: '2024-01-05T08:19:01+00:00'
 requested_by: hasansezertasan
 provider: github
 branch: main
@@ -17,6 +17,7 @@ tools:
   category: Languages & Frameworks
   sub_category: Languages
   image_url: https://img.stackshare.io/service/1209/javascript.jpeg
+  detection_source_url: https://github.com/hasansezertasan/mektup
   detection_source: Repo Metadata
 - name: Git
   description: Fast, scalable, distributed revision control system
@@ -26,4 +27,5 @@ tools:
   category: Build, Test, Deploy
   sub_category: Version Control System
   image_url: https://img.stackshare.io/service/1046/git.png
+  detection_source_url: https://github.com/hasansezertasan/mektup
   detection_source: Repo Metadata
